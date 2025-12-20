@@ -1,7 +1,11 @@
-output "project_name" {
-  value = var.project_name
+output "bastion_public_ip" {
+  value = aws_instance.bastion.public_ip
 }
 
-output "environment" {
-  value = var.environment
+output "jenkins_private_ip" {
+  value = aws_instance.jenkins.private_ip
+}
+
+output "ansible_private_ip" {
+  value = aws_instance.ansible.private_ip
 }
