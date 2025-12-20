@@ -1,0 +1,28 @@
+# Terraform
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+
+# Ansible
+*.retry
+
+# Node Modules
+node_modules/
+
+# Maven
+target/
+
+# Python
+__pycache__/
+
+# Kubeconfig
+kubeconfig
+*.kubeconfig
+kubeconfig.yaml
+
+# OS files
+.DS_Store
+
+# Logs
+*.log
