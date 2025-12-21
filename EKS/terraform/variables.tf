@@ -26,3 +26,12 @@ variable "desired_capacity" {
   type    = number
   default = 2
 }
+variable "vpc_id" {
+  description = "VPC ID where EKS will be deployed"
+  type        = string
+}
+
+variable "private_subnet_ids" {
+  description = "Private subnets for EKS worker nodes"
+  type        = list(string)
+}
