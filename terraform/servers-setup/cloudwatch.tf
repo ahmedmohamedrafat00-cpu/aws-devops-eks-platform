@@ -35,3 +35,23 @@ resource "aws_cloudwatch_metric_alarm" "eks_nodes_high_cpu" {
 
   alarm_actions = [aws_sns_topic.eks_alerts.arn]
 }
+resource "aws_cloudwatch_dashboard" "servers_dashboard" {
+  dashboard_name = "${local.name_prefix}-servers-dashboard"
+
+  dashboard_body = jsonencode({
+    widgets = [
+      {
+        type = "metric"
+        properties = {
+          metrics = [
+            ["AWS/EC2", "CPUUtilization", "InstanceId", "jenkins-instance-id"]
+          ]
+          period = 300
+          stat   = "Average"
+          title  = "Jenkins CPU Utilization"
+        }
+      }
+    ]
+  })
+}
+
