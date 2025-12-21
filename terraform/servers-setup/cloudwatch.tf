@@ -23,3 +23,15 @@ resource "aws_cloudwatch_metric_alarm" "jenkins_high_cpu" {
 
   alarm_actions = [aws_sns_topic.servers_alerts.arn]
 }
+resource "aws_cloudwatch_metric_alarm" "eks_nodes_high_cpu" {
+  alarm_name          = "${local.name_prefix}-eks-nodes-high-cpu"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = 2
+  metric_name         = "node_cpu_utilization"
+  namespace           = "ContainerInsights"
+  period              = 300
+  statistic           = "Average"
+  threshold           = 80
+
+  alarm_actions = [aws_sns_topic.eks_alerts.arn]
+}
