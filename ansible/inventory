@@ -1,0 +1,11 @@
+[bastion]
+bastion-host
+
+[jenkins]
+jenkins-server
+
+[ansible]
+ansible-server
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
