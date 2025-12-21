@@ -1,0 +1,17 @@
+---
+# Main Ansible orchestrator
+# (Design only – no execution yet)
+
+- hosts: all
+  roles:
+    - common
+
+- hosts: jenkins
+  roles:
+    - jenkins
+
+- hosts: ansible
+  roles:
+    - eks-access
+    - helm
+
