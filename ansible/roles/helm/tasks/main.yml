@@ -1,0 +1,7 @@
+---
+# Helm installation and usage
+# (Design only – no execution yet)
+
+- name: Placeholder for Helm installation
+  debug:
+    msg: "Helm will be installed and used here"
