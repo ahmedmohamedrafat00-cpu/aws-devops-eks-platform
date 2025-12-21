@@ -1,0 +1,92 @@
+pipeline {
+  agent any
+
+  options {
+    timestamps()
+    disableConcurrentBuilds()
+  }
+
+  parameters {
+    choice(
+      name: 'ENVIRONMENT',
+      choices: ['dev', 'test', 'prod'],
+      description: 'Deployment environment'
+    )
+  }
+
+  environment {
+    APP_NAME = "devops-dashboard"
+    DOCKER_REGISTRY = "nexus.local:8082"
+    IMAGE_TAG = "build-${BUILD_NUMBER}-${ENVIRONMENT}"
+  }
+
+  stages {
+
+    stage('Checkout SCM') {
+      steps {
+        echo "Checking out source code"
+        checkout scm
+      }
+    }
+
+    stage('Prepare Environment') {
+      steps {
+        echo "Preparing build environment for ${ENVIRONMENT}"
+      }
+    }
+
+    stage('Build Backend') {
+      steps {
+        echo "Building Spring Boot backend (Design only)"
+        // sh 'mvn clean package'
+      }
+    }
+
+    stage('Build Frontend') {
+      steps {
+        echo "Building React frontend (Design only)"
+        // sh 'npm install && npm run build'
+      }
+    }
+
+    stage('Run Tests') {
+      steps {
+        echo "Running backend tests (Design only)"
+        // sh 'mvn test'
+      }
+    }
+
+    stage('Docker Build & Push') {
+      steps {
+        echo "Building and pushing Docker images to Nexus (Design only)"
+        /*
+        sh """
+          docker build -t ${DOCKER_REGISTRY}/${APP_NAME}:${IMAGE_TAG} .
+          docker push ${DOCKER_REGISTRY}/${APP_NAME}:${IMAGE_TAG}
+        """
+        */
+      }
+    }
+
+    stage('Deploy to Kubernetes') {
+      steps {
+        echo "Deploying to EKS using Ansible + Helm (Design only)"
+        // sh "ansible-playbook playbooks/site.yml -e env=${ENVIRONMENT}"
+      }
+    }
+  }
+
+  post {
+    success {
+      echo "Deployment to ${ENVIRONMENT} completed successfully"
+    }
+
+    failure {
+      echo "Deployment to ${ENVIRONMENT} failed"
+    }
+
+    always {
+      echo "Pipeline finished"
+    }
+  }
+}
