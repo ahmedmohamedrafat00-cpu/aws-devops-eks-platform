@@ -1,0 +1,8 @@
+image:
+  repository: postgres
+  tag: "13"
+
+database:
+  name: devopsdb
+  user: devops
+  password: devops
