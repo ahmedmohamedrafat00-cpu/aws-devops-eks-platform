@@ -1,0 +1,7 @@
+---
+# Common tasks for all servers
+# (Design only – no execution yet)
+
+- name: Placeholder for common setup
+  debug:
+    msg: "Common role will install base packages and Docker"
