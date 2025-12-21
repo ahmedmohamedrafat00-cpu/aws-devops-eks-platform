@@ -1,0 +1,13 @@
+{
+  "name": "devops-dashboard-ui",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "scripts": {
+    "start": "echo 'frontend placeholder'",
+    "build": "echo 'frontend build placeholder'"
+  }
+}
