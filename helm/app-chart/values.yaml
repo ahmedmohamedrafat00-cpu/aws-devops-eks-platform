@@ -1,0 +1,21 @@
+environment: dev
+
+backend:
+  image:
+    repository: nexus.local:8082/devops-backend
+    tag: latest
+  replicas: 1
+  service:
+    port: 8080
+
+frontend:
+  image:
+    repository: nexus.local:8082/devops-frontend
+    tag: latest
+  replicas: 1
+  service:
+    port: 80
+
+ingress:
+  enabled: true
+  host: app-dev.local
