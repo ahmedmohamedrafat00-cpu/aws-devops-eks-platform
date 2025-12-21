@@ -1,0 +1,7 @@
+---
+# EKS access configuration
+# (Design only – no execution yet)
+
+- name: Placeholder for EKS kubeconfig setup
+  debug:
+    msg: "EKS access and kubeconfig will be configured here"
