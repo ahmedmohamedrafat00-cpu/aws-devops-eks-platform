@@ -1,0 +1,7 @@
+---
+# Jenkins installation role
+# (Design only – no execution yet)
+
+- name: Placeholder for Jenkins installation
+  debug:
+    msg: "Jenkins will be installed and configured here"
