@@ -43,12 +43,16 @@ resource "aws_cloudwatch_dashboard" "servers_dashboard" {
       {
         type = "metric"
         properties = {
+          region = var.aws_region
           metrics = [
             ["AWS/EC2", "CPUUtilization", "InstanceId", "jenkins-instance-id"]
           ]
           period = 300
           stat   = "Average"
           title  = "Jenkins CPU Utilization"
+          annotations = {
+            horizontal = []
+          }
         }
       }
     ]
